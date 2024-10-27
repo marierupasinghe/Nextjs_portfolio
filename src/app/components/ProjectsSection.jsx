@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image"; // Import Image from next/image
 
-// Sample Project Data with Key Features
 const projectsData = [
   {
     id: 1,
@@ -11,7 +11,7 @@ const projectsData = [
     With its text, graphics, and easy navigation, the website is made to provide users with an interesting and educational experience.`,
     
     keyFeatures: `• A brief introduction to Wonders of France.
-    • Informative sections on France’s history, culture, and landmarks.
+    • Informative sections on France's history, culture, and landmarks.
     • An interactive destinations page that highlights popular tourist places.
     • A contact page to inquire information.
     • A personalized 404 error page for easier navigation.`,
@@ -28,16 +28,15 @@ const projectsData = [
   },
 ];
 
-// Simple Project Card Component
 const ProjectCard = ({ title, description, keyFeatures, image }) => (
   <div className="bg-gray-800 text-white p-4 rounded-md">
-    <img src={image} alt={title} className="w-full h-40 object-cover rounded-md mb-2" />
+    <Image src={image} alt={title} className="w-full h-40 object-cover rounded-md mb-2" width={400} height={160} />
     <h3 className="text-2xl font-bold mb-1">{title}</h3>
     <p>{description}</p>
     {keyFeatures && (
       <>
         <h4 className="text-xl font-semibold mt-4">Key Features:</h4>
-        <p className="whitespace-pre-line">{keyFeatures}</p> {/* Key features paragraph */}
+        <p className="whitespace-pre-line">{keyFeatures}</p> 
       </>
     )}
   </div>
@@ -46,7 +45,6 @@ const ProjectCard = ({ title, description, keyFeatures, image }) => (
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
 
-  // Filter projects based on the selected tag
   const filteredProjects =
     tag === "All"
       ? projectsData
@@ -58,7 +56,6 @@ const ProjectsSection = () => {
     <section id="projects" className="p-8 bg-gray-900">
       <h2 className="text-center text-4xl font-bold text-white mb-6">My Projects</h2>
 
-      {/* Tag Filter (optional, simplified here) */}
       <div className="flex justify-center gap-4 mb-6">
         <button onClick={() => setTag("All")} className={`px-4 py-2 rounded ${tag === "All" ? "bg-blue-600" : "bg-gray-700"}`}>
           All
@@ -71,7 +68,6 @@ const ProjectsSection = () => {
         </button>
       </div>
 
-      {/* Project List */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredProjects.map((project) => (
           <ProjectCard 

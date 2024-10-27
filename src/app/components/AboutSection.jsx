@@ -5,7 +5,7 @@ import TabButton from "./TabButton";
 
 const TAB_DATA = [
   {
-    title: "Education", // Changed from "Skills" to "Education"
+    title: "Education",
     id: "education",
     content: (
       <ul className="list-disc pl-2">
@@ -28,7 +28,7 @@ const TAB_DATA = [
     ),
   },
   {
-    title: "Skills", // Changed from "Education" to "Skills"
+    title: "Skills", 
     id: "skills",
     content: (
       <ul className="list-disc pl-2">
@@ -53,22 +53,27 @@ const AboutSection = () => {
   return (
     <section className="text-white" id="about">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image src="/images/about_image.jpeg" width={400} height={400} />
+        <Image 
+          src="/images/about_image.jpeg" 
+          width={400} 
+          height={400} 
+          alt="A photo of Dewmini Rupasinghe" // Added alt prop
+        />
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
-            I'm Dewmini Rupasinghe, an undergraduate student passionate about UI/UX design. 
-            I love creating simple, user-friendly designs and I'm eager to keep learning and growing in the field.
+            I&apos;m Dewmini Rupasinghe, an undergraduate student passionate about UI/UX design. 
+            I love creating simple, user-friendly designs and I&apos;m eager to keep learning and growing in the field.
           </p>
           <div className="flex flex-row justify-start mt-8">
             <TabButton
-              selectTab={() => handleTabChange("education")} // Update to match the new order
+              selectTab={() => handleTabChange("education")} 
               active={tab === "education"}
             >
               Education
             </TabButton>
             <TabButton
-              selectTab={() => handleTabChange("skills")} // Update to match the new order
+              selectTab={() => handleTabChange("skills")} 
               active={tab === "skills"}
             >
               Skills

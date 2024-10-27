@@ -15,14 +15,14 @@ const EmailSection = () => {
       <div className="z-10">
         <h5 className="text-xl font-bold text-white my-2">Let&apos;s Connect</h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
-        I'm currently looking for new opportunities and would love to connect! My inbox is always open for any questions or simply to chat. Feel free to reach out to me on my social media!
+          I&apos;m currently looking for new opportunities and would love to connect! My inbox is always open for any questions or simply to chat. Feel free to reach out to me on my social media!
         </p>
         <div className="socials flex flex-row gap-2">
-          <Link href="https://github.com/marierupasinghe" target="_blank">
-            <Image src={GithubIcon} alt="Github Icon" />
+          <Link href="https://github.com/marierupasinghe" target="_blank" aria-label="Github Profile">
+            <Image src={GithubIcon} alt="Github Icon" width={24} height={24} />
           </Link>
-          <Link href="https://www.linkedin.com/in/dewmini-rupasinghe-ba6798290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
+          <Link href="https://www.linkedin.com/in/dewmini-rupasinghe-ba6798290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" aria-label="Linkedin Profile">
+            <Image src={LinkedinIcon} alt="Linkedin Icon" width={24} height={24} />
           </Link>
         </div>
       </div>

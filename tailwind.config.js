@@ -18,6 +18,13 @@ module.exports = {
       ...colors,
       primary: colors.purple,
       secondary: colors.pink,
+      // Update these color mappings according to the latest Tailwind CSS
+      sky: colors.sky, // previously lightBlue
+      stone: colors.stone, // previously warmGray
+      neutral: colors.neutral, // previously trueGray
+      gray: colors.gray, // previously coolGray
+      slate: colors.slate, // previously blueGray
+      // Keep your custom colors if needed
     },
   },
   plugins: [],
