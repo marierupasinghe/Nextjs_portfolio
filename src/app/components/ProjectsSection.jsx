@@ -1,126 +1,88 @@
 "use client";
-import React, { useState, useRef } from "react";
-import ProjectCard from "./ProjectCard";
-import ProjectTag from "./ProjectTag";
-import { motion, useInView } from "framer-motion";
+import React, { useState } from "react";
 
+// Sample Project Data with Key Features
 const projectsData = [
   {
     id: 1,
-    title: "React Portfolio Website",
-    description: "Project 1 description",
-    image: "/images/projects/1.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    title: "Explore the wonders of France",
+    description: `This project is a multi-page website that was built using Next.js. 
+    The website highlights the beauty and the culture of France. 
+    With its text, graphics, and easy navigation, the website is made to provide users with an interesting and educational experience.`,
+    
+    keyFeatures: `• A brief introduction to Wonders of France.
+    • Informative sections on France’s history, culture, and landmarks.
+    • An interactive destinations page that highlights popular tourist places.
+    • A contact page to inquire information.
+    • A personalized 404 error page for easier navigation.`,
+    
+    image: "/images/projects/France project.jpeg",
   },
   {
     id: 2,
-    title: "Potography Portfolio Website",
-    description: "Project 2 description",
-    image: "/images/projects/2.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 3,
-    title: "E-commerce Application",
-    description: "Project 3 description",
-    image: "/images/projects/3.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 4,
-    title: "Food Ordering Application",
-    description: "Project 4 description",
-    image: "/images/projects/4.png",
-    tag: ["All", "Mobile"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 5,
-    title: "React Firebase Template",
-    description: "Authentication and CRUD operations",
-    image: "/images/projects/5.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 6,
-    title: "Full-stack Roadmap",
-    description: "Project 5 description",
-    image: "/images/projects/6.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    title: "Movie Explorer",
+    description: 'This Movie Explorer website was designed using Next.js to provide users with an engaging and interactive platform for discovering movies. It features server-side rendering (SSR) for fetching and displaying detailed movie information. In addition, the site offers client-side rendering (CSR) with a search bar allowing users to search for movies by title.',
+    
+    keyFeatures: "• Server-Side rendering\n• Client-Side rendering\n• User-Friendly Interface",
+    image: "/images/projects/Movie Explorer.jpeg",
   },
 ];
 
+// Simple Project Card Component
+const ProjectCard = ({ title, description, keyFeatures, image }) => (
+  <div className="bg-gray-800 text-white p-4 rounded-md">
+    <img src={image} alt={title} className="w-full h-40 object-cover rounded-md mb-2" />
+    <h3 className="text-2xl font-bold mb-1">{title}</h3>
+    <p>{description}</p>
+    {keyFeatures && (
+      <>
+        <h4 className="text-xl font-semibold mt-4">Key Features:</h4>
+        <p className="whitespace-pre-line">{keyFeatures}</p> {/* Key features paragraph */}
+      </>
+    )}
+  </div>
+);
+
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
 
-  const handleTagChange = (newTag) => {
-    setTag(newTag);
-  };
-
-  const filteredProjects = projectsData.filter((project) =>
-    project.tag.includes(tag)
-  );
-
-  const cardVariants = {
-    initial: { y: 50, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-  };
+  // Filter projects based on the selected tag
+  const filteredProjects =
+    tag === "All"
+      ? projectsData
+      : projectsData.filter((project) =>
+          project.title.toLowerCase().includes(tag.toLowerCase())
+        );
 
   return (
-    <section id="projects">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-        My Projects
-      </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-        <ProjectTag
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
-        />
+    <section id="projects" className="p-8 bg-gray-900">
+      <h2 className="text-center text-4xl font-bold text-white mb-6">My Projects</h2>
+
+      {/* Tag Filter (optional, simplified here) */}
+      <div className="flex justify-center gap-4 mb-6">
+        <button onClick={() => setTag("All")} className={`px-4 py-2 rounded ${tag === "All" ? "bg-blue-600" : "bg-gray-700"}`}>
+          All
+        </button>
+        <button onClick={() => setTag("France")} className={`px-4 py-2 rounded ${tag === "France" ? "bg-blue-600" : "bg-gray-700"}`}>
+          France
+        </button>
+        <button onClick={() => setTag("Movie Explorer")} className={`px-4 py-2 rounded ${tag === "Movie Explorer" ? "bg-blue-600" : "bg-gray-700"}`}>
+          Movie Explorer
+        </button>
       </div>
-      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
-        {filteredProjects.map((project, index) => (
-          <motion.li
-            key={index}
-            variants={cardVariants}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
-          >
-            <ProjectCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              imgUrl={project.image}
-              gitUrl={project.gitUrl}
-              previewUrl={project.previewUrl}
-            />
-          </motion.li>
+
+      {/* Project List */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {filteredProjects.map((project) => (
+          <ProjectCard 
+            key={project.id} 
+            title={project.title} 
+            description={project.description} 
+            keyFeatures={project.keyFeatures} 
+            image={project.image} 
+          />
         ))}
-      </ul>
+      </div>
     </section>
   );
 };
