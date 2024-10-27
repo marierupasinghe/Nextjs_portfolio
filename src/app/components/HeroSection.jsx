@@ -22,7 +22,7 @@ const HeroSection = () => {
             <br />
             <TypeAnimation
               sequence={[
-                "I&apos;m Dewmini", 
+                "I'm Dewmini", 
                 2000,
                 "an undergraduate",
                 2000,
@@ -36,7 +36,7 @@ const HeroSection = () => {
               repeat={Infinity}
             />
           </h1>
-          <p className="text-gray-800 text-lg sm:text-xl mb-8">
+          <p className="text-gray-400 text-lg sm:text-xl mb-8">
             Crafting intuitive user interfaces with a passion for detail and design. 
             Let&apos;s build experiences that matter.
           </p>

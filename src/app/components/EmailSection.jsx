@@ -13,16 +13,16 @@ const EmailSection = () => {
     >
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
-        <h5 className="text-xl font-bold text-white my-2">Let&apos;s Connect</h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
+        <h5 className="text-3xl font-bold text-white my-2">Let&apos;s Connect</h5>
+        <p className="text-lg text-[#ADB7BE] mb-4 max-w-md">
           I&apos;m currently looking for new opportunities and would love to connect! My inbox is always open for any questions or simply to chat. Feel free to reach out to me on my social media!
         </p>
         <div className="socials flex flex-row gap-2">
           <Link href="https://github.com/marierupasinghe" target="_blank" aria-label="Github Profile">
-            <Image src={GithubIcon} alt="Github Icon" width={24} height={24} />
+            <Image src={GithubIcon} alt="Github Icon" width={32} height={32} />
           </Link>
           <Link href="https://www.linkedin.com/in/dewmini-rupasinghe-ba6798290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" aria-label="Linkedin Profile">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" width={24} height={24} />
+            <Image src={LinkedinIcon} alt="Linkedin Icon" width={32} height={32} />
           </Link>
         </div>
       </div>
